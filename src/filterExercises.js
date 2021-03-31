@@ -54,26 +54,37 @@ export const getPolyglotStudents = (languageCount) => {
 // Export a function called getAvailableInstructors
 // It should not accept any parameters
 // It should return an array of instructors that don't have any students
-
+export const getAvailableInstructors = () => {
+    const availableInstructor = instructors.filter((senpai) => {
+        return !students.find(noStudent => {
+            return senpai.id === noStudent.instructorId
+        })
+    })
+    return availableInstructor
+}
+        
 
 // Export a function called getStudentsByLanguage
 // It should accept one string parameter named `language`
 // It should return an array of students who know the given language
 // HINT: In addition to the `filter` method, you might also look up the `some` method
-
 export const getStudentsByLanguage = (language) => {
-    const thatLanguage = students.filter(foreignLanguage => {
-        if (foreignLanguage.some(languages === language))
-        return foreignLanguage
-    })
-    return thatLanguage
+    return students.filter((student) => 
+         student.languages.some((code) => code === language)
+    )
 }
 
 /******** ADVANCED CHALLENGE ********/
 /******** Only do this if all other tests are passing ****/
 /******** To test, uncomment the code at the bottom of tests/filter.spec.js  *****/
-
 // Export a function called getStudentsByLanguages
 // It should accept an array of strings as a parameter named `languages`
 // It should return an array of students who know ALL of the given languages
 // Ex: getStudentsByLanguages(["Javascript", "C#"])
+/*export const getStudentsByLanguages = (languages) => {
+    const polygots = students.filter(studnet => {
+        if (student.languages.length >= languages)
+        return studnet
+    })
+    return polygots
+}*/
