@@ -56,7 +56,7 @@ export const getPolyglotStudents = (languageCount) => {
 // It should return an array of instructors that don't have any students
 export const getAvailableInstructors = () => {
     const availableInstructor = instructors.filter((senpai) => {
-        return !students.find(noStudent => {
+        return !students.some(noStudent => {
             return senpai.id === noStudent.instructorId
         })
     })
@@ -82,9 +82,10 @@ export const getStudentsByLanguage = (language) => {
 // It should return an array of students who know ALL of the given languages
 // Ex: getStudentsByLanguages(["Javascript", "C#"])
 /*export const getStudentsByLanguages = (languages) => {
-    const polygots = students.filter(studnet => {
-        if (student.languages.length >= languages)
-        return studnet
+    const multilingual = students.filter(student => {
+        if (languages.every(soeech => student.languages.includes(soeech))) {
+        return student
+        }
     })
-    return polygots
+    return multilingual
 }*/
